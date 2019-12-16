@@ -1,9 +1,10 @@
 configuration {
-	modi: "window,run,ssh";
+	/* May want to add ssh to modi in the futur */
+	modi: "window,run";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-/*	font: "mono 12";*/
+	font: "mono 16";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -77,19 +78,19 @@ configuration {
 /*	kb-remove-word-back: "Control+Alt+h,Control+BackSpace";*/
 /*	kb-remove-word-forward: "Control+Alt+d";*/
 /*	kb-remove-char-forward: "Delete,Control+d";*/
-/*	kb-remove-char-back: "BackSpace,Control+h";*/
-/*	kb-remove-to-eol: "Control+k";*/
+	kb-remove-char-back: "BackSpace";
+	kb-remove-to-eol: "Shift+d";
 /*	kb-remove-to-sol: "Control+u";*/
-/*	kb-accept-entry: "Control+j,Control+m,Return,KP_Enter";*/
+	kb-accept-entry: "Control+m,Return,KP_Enter";
 /*	kb-accept-custom: "Control+Return";*/
 /*	kb-accept-alt: "Shift+Return";*/
 /*	kb-delete-entry: "Shift+Delete";*/
-/*	kb-mode-next: "Shift+Right,Control+Tab";*/
-/*	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";*/
-/*	kb-row-left: "Control+Page_Up";*/
-/*	kb-row-right: "Control+Page_Down";*/
-/*	kb-row-up: "Up,Control+p,ISO_Left_Tab";*/
-/*	kb-row-down: "Down,Control+n";*/
+	kb-mode-next: "Alt+l,Control+Tab";
+	kb-mode-previous: "Alt+h,Control+ISO_Left_Tab";
+	kb-row-left: "Control+h";
+	kb-row-right: "Control+l";
+	kb-row-up: "Up,Control+k,ISO_Left_Tab";
+	kb-row-down: "Down,Control+j";
 /*	kb-row-tab: "Tab";*/
 /*	kb-page-prev: "Page_Up";*/
 /*	kb-page-next: "Page_Down";*/

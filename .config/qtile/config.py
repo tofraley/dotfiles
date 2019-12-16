@@ -41,11 +41,12 @@ keys = [
     
     # Application Hotkeys
     Key([mod], "r", lazy.spawn("rofi -show run")),
+    Key([mod], "w", lazy.spawn("rofi -show window")),
     Key([mod], "Return", lazy.spawn("terminator")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "F4", lazy.window.kill()),
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
