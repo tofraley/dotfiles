@@ -4,7 +4,7 @@ from libqtile import layout, bar, widget
 
 from typing import List  # noqa: F401
 
-mod = "mod4"
+mod = "mod1"
 
 keys = [
     # Switch between windows in current stack pane
@@ -38,6 +38,9 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    
+    # Application Hotkeys
+    Key([mod], "r", lazy.spawn("rofi -show run")),
     Key([mod], "Return", lazy.spawn("terminator")),
 
     # Toggle between different layouts as defined below
@@ -46,7 +49,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd()),
+#    Key([mod], "r", lazy.spawncmd()),
 ]
 
 groups = [Group(i) for i in "12345678"]
@@ -81,8 +84,8 @@ layouts = [
 
 widget_defaults = dict(
     font='sans',
-    fontsize=12,
-    padding=3,
+    fontsize=18,
+    kadding=3,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -98,7 +101,7 @@ screens = [
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            24,
+            32,
         ),
     ),
 ]
