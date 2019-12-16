@@ -73,8 +73,8 @@ configuration {
 /*	kb-move-end: "Control+e";*/
 /*	kb-move-word-back: "Alt+b";*/
 /*	kb-move-word-forward: "Alt+f";*/
-/*	kb-move-char-back: "Left,Control+b";*/
-/*	kb-move-char-forward: "Right,Control+f";*/
+	kb-move-char-back: "Left";
+	kb-move-char-forward: "Right";
 /*	kb-remove-word-back: "Control+Alt+h,Control+BackSpace";*/
 /*	kb-remove-word-forward: "Control+Alt+d";*/
 /*	kb-remove-char-forward: "Delete,Control+d";*/
@@ -87,10 +87,10 @@ configuration {
 /*	kb-delete-entry: "Shift+Delete";*/
 	kb-mode-next: "Alt+l,Control+Tab";
 	kb-mode-previous: "Alt+h,Control+ISO_Left_Tab";
-	kb-row-left: "Control+h";
-	kb-row-right: "Control+l";
-	kb-row-up: "Up,Control+k,ISO_Left_Tab";
-	kb-row-down: "Down,Control+j";
+	kb-row-left: "Control+b";
+	kb-row-right: "Control+f";
+	kb-row-up: "Up,Alt+k,ISO_Left_Tab";
+	kb-row-down: "Down,Alt+j";
 /*	kb-row-tab: "Tab";*/
 /*	kb-page-prev: "Page_Up";*/
 /*	kb-page-next: "Page_Down";*/
