@@ -3,6 +3,7 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
+# from powerline.bindings.qtile.widget import PowerlineTextBox
 from typing import List  
 
 alt = "mod1"
@@ -92,6 +93,13 @@ screens = [
             32,
             background=color1
         ),
+#       top=bar.Bar([
+#               PowerlineTextBox(update_interval=2, side='left'),
+#               widget.Spacer(),
+#               PowerlineTextBox(update_interval=2, side='right'),
+#           ],
+#           35 # width
+#       ),
     ),
 ]
 
