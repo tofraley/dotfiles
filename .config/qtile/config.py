@@ -8,9 +8,9 @@ from typing import List
 
 alt = "mod1"
 windows = "mod4"
-color1 = "705A37"
-color2 = "48381F"
-color3 = "A89984"
+color1 = "9A4FC6" # "923BC6" # "705A37"
+color2 = "B08BC6" # "37705C" # "48381F"
+color3 = "A876C6" # "C6913B" # "A89984"
 
 keys = [
     # Switch between windows in current stack pane
@@ -137,9 +137,12 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-#   @hook.subscribe.startup_once
-#   def start_once():
-#       subprocess.call("nitrogen --restore")
+@hook.subscribe.startup
+def startup():
+#    subprocess.call("nitrogen --restore")
+    subprocess.call(['xsetroot',
+                     '-cursor_name', 'left_prt',
+                     '-solid', '#' + color3])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
