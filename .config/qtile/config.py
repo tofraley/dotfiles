@@ -3,85 +3,72 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 
-from typing import List  # noqa: F401
+from typing import List  
 
-mod = "mod1"
+alt = "mod1"
+windows = "mod4"
+color1 = "705A37"
+color2 = "48381F"
+color3 = "A89984"
 
 keys = [
     # Switch between windows in current stack pane
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "k", lazy.layout.up()),
+    Key([alt], "h", lazy.layout.left()),
+    Key([alt], "l", lazy.layout.right()),
+    Key([alt], "j", lazy.layout.down()),
+    Key([alt], "k", lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key([mod, "shift"], "h", lazy.layout.swap_left()),
-    Key([mod, "shift"], "l", lazy.layout.swap_right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    Key([alt, "shift"], "h", lazy.layout.swap_left()),
+    Key([alt, "shift"], "l", lazy.layout.swap_right()),
+    Key([alt, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([alt, "shift"], "k", lazy.layout.shuffle_up()),
     
     # Shrink/grow windows
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "o", lazy.layout.maximize()),
-    Key([mod, "shift"], "space", lazy.layout.flip()),
+    Key([alt], "i", lazy.layout.grow()),
+    Key([alt], "m", lazy.layout.shrink()),
+    Key([alt], "n", lazy.layout.normalize()),
+    Key([alt], "o", lazy.layout.maximize()),
+    Key([alt, "shift"], "space", lazy.layout.flip()),
     
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next()),
-
-    # Swap panes of split stack
-#   Key([mod, "shift"], "space", lazy.layout.rotate()),
+    Key([alt], "Tab", lazy.layout.next()),
+    Key([windows], "Tab", lazy.layout.next()),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    Key([alt, "shift"], "Return", lazy.layout.toggle_split()),
     
     # Application Hotkeys
-    Key([mod], "r", lazy.spawn("rofi -show run")),
-    Key([mod], "w", lazy.spawn("rofi -show window")),
-    Key([mod], "Return", lazy.spawn("terminator")),
+    Key([alt], "r", lazy.spawn("rofi -show run")),
+    Key([alt], "w", lazy.spawn("rofi -show window")),
+    Key([alt], "Return", lazy.spawn("terminator")),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "F4", lazy.window.kill()),
+#   Key([alt], "Tab", lazy.next_layout()),
 
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "control"], "q", lazy.shutdown()),
-#    Key([mod], "r", lazy.spawncmd()),
+    Key([alt], "F4", lazy.window.kill()),
+
+    Key([alt, "control"], "r", lazy.restart()),
+    Key([alt, "control"], "q", lazy.shutdown()),
 ]
 
 groups = [Group(i) for i in "12345678"]
 
 for i in groups:
     keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
+        # alt1 + letter of group = switch to group
+        Key([alt], i.name, lazy.group[i.name].toscreen()),
 
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        # alt1 + shift + letter of group = switch to & move focused window to group
+        Key([alt, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
     ])
 
 layouts = [
-    layout.Max(),
-    layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.Columns(),
-    # layout.Matrix(),
-    layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.MonadTall(border_normal=color1, border_focus=color2, border_width=12, single_border_width=12, margin=40, single_margin=40, change_ratio=0.05),
 ]
 
 widget_defaults = dict(
@@ -95,26 +82,26 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
-                widget.Prompt(),
                 widget.WindowName(),
-                widget.TextBox("taylor's config", name="taylor-config-1"),
+                widget.CurrentLayout(),
+                widget.TextBox("my config", name="taylor-config-1"),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
             32,
+            background=color1
         ),
     ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
+    Drag([alt], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
+    Drag([alt], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click([alt], "Button2", lazy.window.bring_to_front())
 ]
 
 dgroups_key_binder = None
@@ -142,9 +129,9 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-@hook.subscribe.startup_once
-def start_once():
-    subprocess.call("nitrogen --restore")
+#   @hook.subscribe.startup_once
+#   def start_once():
+#       subprocess.call("nitrogen --restore")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
