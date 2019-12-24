@@ -57,7 +57,7 @@ keys = [
     Key([alt, "control"], "q", lazy.shutdown()),
 ]
 
-groups = [Group(i) for i in "12345678"]
+groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend([
@@ -69,7 +69,7 @@ for i in groups:
     ])
 
 layouts = [
-    layout.MonadTall(border_normal=color1, border_focus=color2, border_width=12, single_border_width=12, margin=40, single_margin=40, change_ratio=0.05),
+    layout.MonadTall(border_normal=color1, border_focus=color2, border_width=0, single_border_width=0, margin=40, single_margin=40, change_ratio=0.05),
 ]
 
 widget_defaults = dict(
