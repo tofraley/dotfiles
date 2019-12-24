@@ -44,8 +44,8 @@ keys = [
     Key([alt, "shift"], "Return", lazy.layout.toggle_split()),
     
     # Application Hotkeys
-    Key([alt], "r", lazy.spawn("rofi -show run")),
-    Key([alt], "w", lazy.spawn("rofi -show window")),
+    Key([alt], "r", lazy.spawn("rofi -show run -theme bmenu")),
+    Key([alt], "w", lazy.spawn("rofi -show window -theme bmenu")),
     Key([alt], "Return", lazy.spawn("terminator")),
 
     # Toggle between different layouts as defined below
